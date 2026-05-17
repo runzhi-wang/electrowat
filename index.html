@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ElectroWat DB — 电化学水处理开放数据库" />
+  <title>ElectroWat DB | 电化学水处理数据库</title>
+  <script>
+    (function () {
+      var t = localStorage.getItem("ew-theme");
+      document.documentElement.setAttribute("data-theme", t === "light" ? "light" : "dark");
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <canvas id="field-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">
+          <img
+            class="brand-logo"
+            src="assets/logo.png"
+            alt="ElectroWat DB"
+            width="36"
+            height="36"
+            decoding="async"
+            onerror="this.hidden=true;this.nextElementSibling.hidden=false"
+          />
+          <svg class="brand-logo-fallback" viewBox="0 0 32 32" fill="none" hidden aria-hidden="true">
+            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M8 20c4-6 12-6 16 0M10 12c3-4 9-4 12 0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-en">ElectroWat DB</span>
+          <span class="brand-zh">电化学水处理数据库</span>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="#top" class="nav-link" data-i18n="nav.home">首页</a>
+        <a href="#explore" class="nav-link" data-i18n="nav.explore">数据检索</a>
+        <a href="#analytics" class="nav-link" data-i18n="nav.analytics">统计分析</a>
+        <a href="#about" class="nav-link" data-i18n="nav.about">关于我们</a>
+        <a href="#cite" class="nav-link" data-i18n="nav.cite">引用</a>
+        <a href="#related-research" class="nav-link" data-view="research" data-i18n="nav.research">相关研究</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn btn-ghost" type="button" id="theme-toggle" aria-label="切换浅色主题">浅色</button>
+        <button class="btn btn-ghost" type="button" id="lang-toggle" aria-label="切换语言">EN</button>
+        <a class="btn btn-primary" href="#explore" data-i18n="nav.enter">进入数据库</a>
+      </div>
+    </div>
+  </header>
+
+  <div id="view-home" class="site-view">
+  <main id="top">
+    <section class="hero">
+      <div class="hero-panel">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="hero.eyebrow">开放科学 · 电化学水处理</p>
+          <h1 data-i18n="hero.title1">电化学水处理全球数据平台</h1>
+          <p class="hero-lead" data-i18n="hero.lead1">
+            ElectroWat DB 面向全球环境电化学与水处理社区，系统整合电极材料、反应器构型、工艺参数及污染物降解动力学等多源实验与文献证据，建设大规模、结构化、机器可读并遵循 FAIR 原则的开放数据库。平台以大语言模型辅助文献挖掘、自动字段抽取与语义关联，将分散的知识转化为可编程访问、可批量分析与可模型训练的数据资源。
+          </p>
+          <p class="hero-lead" data-i18n="hero.lead2">
+            在自动化管线之上，每一条关键记录均经领域专家复核、质量标注与可追溯管理，保障跨研究组对比的可复现性与学术引用规范。我们愿以这一基础设施贯通基础研究与工程应用，加速科学发现与工艺迭代，全面赋能人工智能与数据驱动的科研范式（AI4Science），为绿色、低碳、可持续的水处理技术创新提供坚实底座。
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="#explore" data-i18n="hero.cta1">检索数据集</a>
+            <a class="btn btn-outline btn-lg" href="#cite" data-i18n="hero.cta2">如何引用</a>
+          </div>
+        </div>
+        <figure class="hero-visual">
+          <img
+            class="hero-cover"
+            src="assets/封面图片.png"
+            alt=""
+            data-i18n-alt="hero.cover.alt"
+            width="560"
+            height="420"
+            decoding="async"
+            data-cover-base="封面图片"
+            onerror="heroCoverFallback(this)"
+          />
+        </figure>
+      </div>
+      <div class="hero-stats-block">
+        <dl class="hero-stats">
+          <div><dt class="stat-num">12,847</dt><dd data-i18n="stat.records">实验记录</dd></div>
+          <div><dt class="stat-num">386</dt><dd data-i18n="stat.pollutants">目标污染物</dd></div>
+          <div><dt class="stat-num">2,104</dt><dd data-i18n="stat.papers">关联文献</dd></div>
+          <div><dt class="stat-num">47</dt><dd data-i18n="stat.countries">贡献国家/地区</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section home-overview" id="overview">
+      <div class="section-head section-head-center">
+        <h2 data-i18n="home.section.title">数据库概览</h2>
+        <p data-i18n="overview.desc">
+          每一条记录均关联原始文献 DOI、实验条件与质量平衡校验标记，
+          支持跨工艺、跨电极体系的定量比较与机器学习特征工程。
+        </p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">01</div>
+          <h3 data-i18n="f1.title">标准化元数据</h3>
+          <p data-i18n="f1.desc">涵盖污染物、浓度、电解质、pH、电流密度等 21 项核心字段，遵循 FAIR 数据原则。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">02</div>
+          <h3 data-i18n="f2.title">动力学参数库</h3>
+          <p data-i18n="f2.desc">收录表观速率常数、Tafel 斜率、传质系数与降解中间产物谱系。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">03</div>
+          <h3 data-i18n="f3.title">材料-性能映射</h3>
+          <p data-i18n="f3.desc">电极组成（BDD、PbO₂、Ti/IrO₂ 等）与污染物去除效率的结构化关联。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">04</div>
+          <h3 data-i18n="f4.title">开放 API</h3>
+          <p data-i18n="f4.desc">RESTful 与 GraphQL 接口，支持批量导出 JSON、XLSX 及 BibTeX 引用格式。</p>
+        </article>
+      </div>
+      <h3 class="subsection-title domains-heading section-head-center" data-i18n="domains.title">覆盖电化学水处理六大核心方向</h3>
+      <div class="domain-grid" id="domain-grid"></div>
+    </section>
+
+    <section class="section explore" id="explore">
+      <div class="section-head section-head-compact section-head-center">
+        <h2 data-i18n="explore.title">多维检索与筛选</h2>
+      </div>
+      <div class="explorer-layout">
+        <form class="filter-panel" id="filter-form" aria-label="数据筛选">
+          <div class="filter-group">
+            <label for="q" data-i18n="filter.keyword">关键词</label>
+            <input id="q" name="q" type="search" placeholder="污染物 / 电极 / DOI…" data-i18n-placeholder="filter.ph" />
+          </div>
+          <div class="filter-group">
+            <label for="process" data-i18n="filter.process">工艺类型</label>
+            <select id="process" name="process">
+              <option value="" data-i18n="filter.all">全部</option>
+              <option value="eo">电化学氧化（EO）</option>
+              <option value="ef">电芬顿（EF）</option>
+              <option value="er">电化学还原（ER）</option>
+              <option value="ec">电絮凝（EC）</option>
+              <option value="ed">电渗析/电去离子</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="electrode" data-i18n="filter.electrode">阳极材料</label>
+            <select id="electrode" name="electrode">
+              <option value="" data-i18n="filter.all">全部</option>
+              <option value="bdd">硼掺杂金刚石 (BDD)</option>
+              <option value="pbo2">PbO₂</option>
+              <option value="iro2">Ti/IrO₂</option>
+              <option value="sno2">Ti/SnO₂</option>
+            </select>
+          </div>
+          <div class="filter-group filter-range-group">
+            <label data-i18n="filter.removal">去除率 (%)</label>
+            <div class="range-dual">
+              <input id="removal-min" name="removal-min" type="range" min="0" max="100" value="0" aria-label="去除率下限" />
+              <span class="range-sep" aria-hidden="true">—</span>
+              <input id="removal-max" name="removal-max" type="range" min="0" max="100" value="100" aria-label="去除率上限" />
+            </div>
+            <output id="removal-range-val" class="range-output">0 – 100</output>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit" data-i18n="filter.search">执行检索</button>
+        </form>
+        <div class="results-panel">
+          <div class="results-toolbar">
+            <span id="result-count" class="stat-num">8</span>
+            <span data-i18n="results.found">条匹配记录</span>
+            <button class="btn btn-ghost btn-sm" type="button" id="export-btn" data-i18n="results.export">导出 XLSX</button>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table" id="data-table">
+              <thead>
+                <tr>
+                  <th data-i18n="th.id">ID</th>
+                  <th data-i18n="th.pollutant">污染物</th>
+                  <th data-i18n="th.concentration">浓度</th>
+                  <th data-i18n="th.process">工艺</th>
+                  <th data-i18n="th.electrode">电极</th>
+                  <th data-i18n="th.removal">去除率</th>
+                  <th data-i18n="th.energy">比能耗</th>
+                  <th data-i18n="th.doi">DOI</th>
+                </tr>
+              </thead>
+              <tbody id="table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section analytics" id="analytics">
+      <div class="section-head section-head-compact section-head-center">
+        <h2 data-i18n="analytics.title">数据库统计洞察</h2>
+      </div>
+      <div class="analytics-inner">
+        <div class="analytics-grid analytics-grid--six">
+          <figure class="chart-card">
+            <figcaption data-i18n="chart1.title">年度收录文献量</figcaption>
+            <div class="chart-card-body bar-chart" id="chart-years" role="img"></div>
+          </figure>
+          <figure class="chart-card">
+            <figcaption data-i18n="chart5.title">数据贡献国家/地区</figcaption>
+            <div class="chart-card-body bar-chart bar-chart--countries" id="chart-countries" role="img"></div>
+          </figure>
+          <figure class="chart-card">
+            <figcaption data-i18n="chart2.title">工艺类型分布</figcaption>
+            <div class="chart-card-body donut-wrap">
+              <svg class="donut-chart" id="chart-process" viewBox="0 0 120 120" role="img"></svg>
+              <ul class="donut-legend" id="process-legend"></ul>
+            </div>
+          </figure>
+          <figure class="chart-card">
+            <figcaption data-i18n="chart4.title">阳极材料收录占比</figcaption>
+            <div class="chart-card-body hbar-chart" id="chart-electrodes" role="img"></div>
+          </figure>
+          <figure class="chart-card">
+            <figcaption data-i18n="chart6.title">比能耗分布 (kWh·m⁻³)</figcaption>
+            <div class="chart-card-body bar-chart" id="chart-energy" role="img"></div>
+          </figure>
+          <figure class="chart-card">
+            <figcaption data-i18n="chart3.title">常见污染物去除率分布 (n=2,340)</figcaption>
+            <div class="chart-card-body box-strip box-strip--compact" id="chart-pollutants" role="img"></div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="section-head section-head-compact section-head-center">
+        <h2 data-i18n="about.title">关于我们</h2>
+        <p class="about-intro" data-i18n="about.intro">我们致力于构建开放、可信、可持续的电化学水处理数据生态，连接全球研究者与工程实践者。</p>
+      </div>
+      <h3 class="subsection-title section-head-center" data-i18n="about.team.title">核心团队</h3>
+      <div class="team-layout">
+        <div class="team-row team-row--lead" id="team-lead" aria-label="核心成员"></div>
+        <div class="team-row team-row--support" id="team-support" aria-label="团队成员"></div>
+        <div class="team-units" id="team-units" aria-label="合作单位"></div>
+      </div>
+      <div class="about-grid about-grid-after-team">
+        <div class="about-item">
+          <h3 class="about-item-title" data-i18n="about.vision.title">愿景</h3>
+          <article class="about-block">
+            <ul class="about-list">
+              <li data-i18n="about.vision.1">让每一条实验数据可被检索、可被复现、可被引用</li>
+              <li data-i18n="about.vision.2">使 ElectroWat DB 成为全球环境电化学水处理开放协作的知识枢纽</li>
+              <li data-i18n="about.vision.3">打通基础研究、工程放大与智慧水务之间的知识链条</li>
+              <li data-i18n="about.vision.4">以开放数据涵养互信协作的科研文化，惠及全球水环境守护者</li>
+              <li data-i18n="about.vision.5">引领绿色、低碳、可持续水处理技术的长期变革</li>
+            </ul>
+          </article>
+        </div>
+        <div class="about-item">
+          <h3 class="about-item-title" data-i18n="about.mission.title">使命</h3>
+          <article class="about-block">
+            <ul class="about-list">
+              <li data-i18n="about.mission.1">建立覆盖氧化、还原、分离等全工艺链的标准化数据库</li>
+              <li data-i18n="about.mission.2">推动 FAIR 原则在环境电化学领域的落地实践</li>
+              <li data-i18n="about.mission.3">降低跨实验室数据比较与 meta 分析的门槛</li>
+              <li data-i18n="about.mission.4">建设人机协同的文献挖掘、字段抽取与专家质控工作流</li>
+              <li data-i18n="about.mission.5">为机器学习、过程优化与材料筛选提供高质量、可复现的特征数据集</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+      <h3 class="subsection-title contact-heading" data-i18n="about.contact.title">联系方式</h3>
+      <div class="contact-cards">
+        <a class="contact-card" href="mailto:runzhiwang2021@163.com">
+          <span class="contact-label" data-i18n="about.contact.email">学术合作</span>
+          <span class="contact-value" data-i18n="about.contact.email.val">runzhiwang2021@163.com</span>
+        </a>
+        <a class="contact-card" href="mailto:electrowat@163.com">
+          <span class="contact-label" data-i18n="about.contact.data">数据贡献</span>
+          <span class="contact-value" data-i18n="about.contact.data.val">electrowat@163.com</span>
+        </a>
+        <div class="contact-card contact-card-static">
+          <span class="contact-label" data-i18n="about.contact.addr">通讯地址</span>
+          <span class="contact-value" data-i18n="about.contact.addr.val">哈尔滨市南岗区150090，黑龙江省，中国</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cite" id="cite">
+      <div class="cite-layout">
+        <div class="section-head section-head-compact section-head-center">
+          <h2 data-i18n="cite.title">学术引用</h2>
+          <p data-i18n="cite.desc">使用本数据库发表研究成果时，请引用以下条目以支持开放科学生态。</p>
+        </div>
+        <blockquote class="citation-block">
+          <p>Zhang, L., et al. (2024). ElectroWat DB: An open database for electrochemical water treatment. <em>Environmental Science &amp; Technology Data</em>, 8(2), 112–128. https://doi.org/10.xxxx/electrowat.2024</p>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+  </div>
+
+  <div id="view-research" class="site-view" hidden>
+    <main class="section research-page" id="research-page">
+      <div class="section-head section-head-compact section-head-center">
+        <h2 data-i18n="research.title">相关研究</h2>
+        <p class="research-intro" data-i18n="research.intro">
+          在这个网页上，我们分享了一系列与电化学水处理相关的机器学习和深度学习文章以及高质量的综述。您可以使用每个条目下提供的链接下载这些数据集。
+        </p>
+      </div>
+      <div class="research-inner">
+        <div class="research-list" id="research-list" aria-live="polite"></div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>ElectroWat DB</strong>
+        <p data-i18n="footer.tagline">环境电化学开放数据倡议 · CC BY 4.0</p>
+      </div>
+      <nav class="footer-nav" aria-label="页脚导航">
+        <a href="#overview" data-i18n="nav.home">首页</a>
+        <a href="#explore" data-i18n="nav.explore">数据检索</a>
+        <a href="#about" data-i18n="nav.about">关于我们</a>
+        <a href="#cite" data-i18n="nav.cite">引用</a>
+        <a href="#related-research" data-view="research" data-i18n="nav.research">相关研究</a>
+      </nav>
+      <p class="footer-meta">© 2024–2026 ElectroWat DB Consortium</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <script src="research-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
