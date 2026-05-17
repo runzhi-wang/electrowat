@@ -453,7 +453,7 @@ const I18N = {
     "team.lead.b3": "计算电催化与人工智能",
     "team.lead.r4": "领衔顾问，行业专家",
     "team.lead.b4": "未来绿色低碳城乡水系统",
-    "team.support.r1": "研究专员",
+    "team.support.r1": "实验研究员",
     "team.support.r2": "数据架构师",
     "team.support.r3": "算法工程师",
     "team.support.r4": "数据挖掘",
@@ -874,12 +874,12 @@ function initCanvas() {
       p.y += p.vy;
       if (p.x < 0 || p.x > w) p.vx *= -1;
       if (p.y < 0 || p.y > h) p.vy *= -1;
-
+    
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${accent}, 0.2)`;
       ctx.fill();
-
+    
       for (let j = i + 1; j < particles.length; j++) {
         const q = particles[j];
         const dist = Math.hypot(p.x - q.x, p.y - q.y);
@@ -1169,7 +1169,7 @@ function initCharts() {
           return `<path d="M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${large} 1 ${x2} ${y2} Z" fill="${a.color}" opacity="0.9"/>`;
         })
         .join("") + `<circle cx="${cx}" cy="${cy}" r="26" fill="${getThemeColor("--bg-panel") || "#0e1420"}"/>`;
-
+    
     legend.innerHTML = PROCESS_DIST.map(
       (p) =>
         `<li><span class="swatch" style="background:${p.color}"></span>${chartLabel(p)} <strong>${p.pct}%</strong></li>`

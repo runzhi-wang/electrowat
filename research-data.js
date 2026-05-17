@@ -25,43 +25,40 @@ This review elaborates on the principles of electrically driven water treatment 
 ---
 
 ---
-title: 纳滤膜分离性能的机器学习高通量筛选：综述
-title_en: Machine Learning for High-Throughput Screening of Nanofiltration Performance: A Review
-authors: Kumar, A. 等
-authors_en: Kumar, A., et al.
-venue: Desalination
-venue_en: Desalination
-year: 2024
+title: 用于去除水体中有机污染物的单相与耦合电化学过程及反应器：批判性综述
+title_en: Single and Coupled Electrochemical Processes and Reactors for the Abatement of Organic Water Pollutants: A Critical Review
+authors: Martínez-Huitle, C. A. 等
+authors_en: Martínez-Huitle, C. A., et al.
+venue: Chemical Reviews
+venue_en: Chemical Reviews
+year: 2015
 type: 综述
 type_en: Review
-tags: 机器学习,纳滤,综述
-tags_en: Machine learning, Nanofiltration, Review
-link: https://doi.org/10.1016/j.desal.2024.02.041
+tags: 电化学,水处理, 有机污染物
+tags_en: Electrochemistry, Water Treatment, Organic Pollutants
+link:  https://doi.org/10.1021/acs.chemrev.5b00361
 abstract: |
-  系统梳理描述符工程、迁移学习与可解释 AI 在纳滤膜材料—性能关联中的应用，总结公开数据库与基准任务，指出数据标准化与实验—计算闭环的关键挑战。
+  综述电化学去除有机污染物技术：直接/间接氧化、阴阳极耦合，评估反应器设计及放大前景。
 abstract_en: |
-
-  Surveys descriptors, transfer learning, and explainable AI for NF materials–performance links, benchmarks public datasets, and highlights standardization and lab–computation closed loops.
----
+  Reviews electrochemical removal of organic pollutants: direct/indirect oxidation, anodic-cathodic coupling, assessing reactor design and scale-up prospects.
 
 ---
-title: 电渗析膜堆故障诊断的图神经网络方法
-title_en: Graph Neural Networks for Fault Diagnosis in Electrodialysis Stacks
-authors: Chen, H. 等
-authors_en: Chen, H., et al.
-venue: Water Research
-venue_en: Water Research
-year: 2022
-type: 研究论文
-type_en: Research article
-tags: 图神经网络,电渗析,故障诊断
-tags_en: Graph neural network, Electrodialysis, Fault diagnosis
-link: https://doi.org/10.1016/j.watres.2022.09.055
+title: 机器学习在电化学氧化过程中的应用：小综述
+title_en: Machine learning in electrochemical oxidation process: A mini-review
+authors: Li, Z. L. 等
+authors_en: Li, Z. L., et al.
+venue: Chinese Chemical Letters
+venue_en: Chinese Chemical Letters
+year: 2025
+type: 综述
+type_en: Review
+tags: 机器学习，电化学氧化，污染物去除，锂离子电池，材料合成
+tags_en: Machine Learning, Electrochemical Oxidation, Pollutant Removal, Lithium-ion Battery, Material Synthesis
+link: https://doi.org/10.1016/j.cclet.2024.110526
 abstract: |
-  将膜堆离子膜与流道抽象为图结构，利用 GNN 从电压—电流曲线中识别泄漏、浓差极化与结垢模式，实验验证 F1 达 0.89。
+  首次系统综述机器学习在电化学氧化中的应用，涵盖污染物去除、电池修复、物质合成及材料表征预测，分析了热点趋势与常见算法。
 abstract_en: |
-  Models membranes and channels as graphs; a GNN detects leakage, concentration polarization, and scaling from V–I curves with F1 = 0.89 in experiments.
----
+  First systematic review of machine learning applications in electrochemical oxidation, covering pollutant removal, battery remediation, substance synthesis, and material characterization prediction, with analysis of hot trends and common algorithms.
 
 ---
 title: 超滤—反渗透耦合工艺的集成学习优化
