@@ -72,8 +72,7 @@ type_en: Research Article
 tags: 机器学习，电化学氧化，逆设计，反应速率，XGBoost，SHAP
 tags_en: Machine Learning, Electrochemical Oxidation, Inverse Design, Reaction Rate, XGBoost, SHAP
 link: https://doi.org/10.1021/acs.est.2c08771
-abstract: | 
-  建立了面向电化学氧化过程逆设计的机器学习框架，基于XGBoost模型预测反应速率常数，结合PSO算法优化反应条件，实验验证相对误差低于5%。
+abstract:  建立了面向电化学氧化过程逆设计的机器学习框架，基于XGBoost模型预测反应速率常数，结合PSO算法优化反应条件，实验验证相对误差低于5%。
 abstract_en: |
 
   A machine learning framework for inverse design of electrochemical oxidation process was established. The XGBoost model predicted reaction rate constants, and the PSO algorithm optimized reaction conditions, with experimental relative errors below 5%.
@@ -92,11 +91,8 @@ type_en: Research Article
 tags: 机器学习，大语言模型，电化学氧化，C-H键氧化，反应优化
 tags_en: Machine Learning, Large Language Models, Electrochemical Oxidation, C-H Oxidation, Reaction Optimization
 link: https://doi.org/10.1002/anie.202418074
-abstract: | 
-  整合机器学习与大语言模型加速电化学C-H氧化反应探索，实现反应性预测与合成条件优化。
-abstract_en: |
-
-  Integrates machine learning and large language models to accelerate exploration of electrochemical C-H oxidation reactions, enabling reactivity prediction and synthesis condition optimization.
+abstract:  整合机器学习与大语言模型加速电化学C-H氧化反应探索，实现反应性预测与合成条件优化。
+abstract_en:  Integrates machine learning and large language models to accelerate exploration of electrochemical C-H oxidation reactions, enabling reactivity prediction and synthesis condition optimization.
 
 ---
 
@@ -112,8 +108,7 @@ type_en: Research Article
 tags: 电化学高级氧化，抗生素，机器学习，SHAP分析，模型预测
 tags_en: Electrochemical Advanced Oxidation, Antibiotics, Machine Learning, SHAP Analysis, Model Prediction
 link: https://doi.org/10.1016/j.jenvman.2025.126762
-abstract: | 
-  集成六种机器学习算法预测抗生素电化学氧化降解效率，GBDT模型表现最优，识别电流密度、抗生素浓度和pKa为关键因素。
+abstract:  集成六种机器学习算法预测抗生素电化学氧化降解效率，GBDT模型表现最优，识别电流密度、抗生素浓度和pKa为关键因素。
 abstract_en: |
 
  Integrated six machine learning algorithms to predict antibiotic degradation efficiency in electrochemical oxidation, with GBDT achieving optimal performance, identifying current density, antibiotic concentration and pKa as key factors.
@@ -132,8 +127,7 @@ type_en: Research Article
 tags: 印刷油墨废水，总有机碳，混凝，电氧化，人工神经网络，建模
 tags_en: Printing Ink Wastewater, Total Organic Carbon, Coagulation, Electrooxidation, Artificial Neural Network, Modeling
 link: https://doi.org/10.1016/j.jece.2025.116718
-abstract: | 
-  采用FeCl₃混凝结合BDD电氧化处理印刷油墨废水，TOC总去除率达97.63%，并开发ANN模型成功预测电氧化TOC去除效率。
+abstract:  采用FeCl₃混凝结合BDD电氧化处理印刷油墨废水，TOC总去除率达97.63%，并开发ANN模型成功预测电氧化TOC去除效率。
 abstract_en: |
 
 Combined FeCl₃ coagulation and BDD electro-oxidation achieved 97.63% TOC removal from printing ink wastewater, and developed an ANN model to successfully predict TOC removal efficiency of electro-oxidation.
@@ -152,8 +146,7 @@ type_en: Research Article
 tags: 电化学氧化，机器学习，碳基阳极，轻量梯度提升机，水处理
 tags_en: Electrochemical Oxidation, Machine Learning, Carbon-based Anode, LightGBM, Water Treatment
 link: https://doi.org/10.1016/j.jenvman.2025.127210
-abstract: | 
-  应用九种机器学习算法评估碳基阳极电氧化性能，LightGBM预测最优，发现操作参数比阳极材料类型对去除效率影响更大。
+abstract:  应用九种机器学习算法评估碳基阳极电氧化性能，LightGBM预测最优，发现操作参数比阳极材料类型对去除效率影响更大。
 abstract_en: |
 
   Applied nine machine learning algorithms to evaluate carbon-based anode electro-oxidation performance, with LightGBM achieving optimal prediction, finding that operational parameters influence removal efficiency more than anode material type.
@@ -174,9 +167,7 @@ tags_en: Machine Learning, Electrochemistry, Potential Prediction, Alcohol Oxida
 link: https://doi.org/10.1016/j.electacta.2024.145285
 abstract: |
   构建预测甲醇和乙醇电氧化起始电位与氧化电位的机器学习模型，随机森林表现最优，实验验证均方根误差分别低至0.0967和0.0234。
-abstract_en: |
-
-Developed machine learning models to predict onset and oxidation potentials for methanol and ethanol electrooxidation, with Random Forest achieving optimal performance and experimental validation RMSE as low as 0.0967 and 0.0234, respectively.
+abstract_en: Developed machine learning models to predict onset and oxidation potentials for methanol and ethanol electrooxidation, with Random Forest achieving optimal performance and experimental validation RMSE as low as 0.0967 and 0.0234, respectively.
 
 ---
 
@@ -192,11 +183,8 @@ type_en: Research Article
 tags: 电化学氧化，机器学习，强化学习，含氧氯物种，水处理
 tags_en: Electrochemical Oxidation, Machine Learning, Reinforcement Learning, Oxychlorine Species, Water Treatment
 link: https://doi.org/10.1038/s41545-025-00530-x
-abstract: |
-  结合机器学习和强化学习预测并控制含盐电化学氧化中有毒副产物氯酸盐和高氯酸盐的生成，MLP模型预测最优，SAC算法实现高效节能控制。
-abstract_en: | 
-
- Combined machine learning and reinforcement learning to predict and control the formation of toxic byproducts chlorate and perchlorate in saline electrochemical oxidation, with MLP achieving optimal prediction and SAC algorithm enabling energy-efficient control.
+abstract:  结合机器学习和强化学习预测并控制含盐电化学氧化中有毒副产物氯酸盐和高氯酸盐的生成，MLP模型预测最优，SAC算法实现高效节能控制。
+abstract_en: Combined machine learning and reinforcement learning to predict and control the formation of toxic byproducts chlorate and perchlorate in saline electrochemical oxidation, with MLP achieving optimal prediction and SAC algorithm enabling energy-efficient control.
 
 ---
 
@@ -212,7 +200,7 @@ type_en: Research Article
 tags: 电化学氧化，全氟辛酸，全氟烷基物质，机器学习，随机森林，特征重要性
 tags_en: Electrochemical Oxidation, Perfluorooctanoic Acid, PFAS, Machine Learning, Random Forest, Feature Importance
 link: https://doi.org/10.1016/j.jenvman.2024.122857
-abstract: |
-  评估五种机器学习模型预测电化学氧化去除全氟辛酸效率，随机森林模型表现最优，电解时间是最关键影响因素。
-abstract_en: | 
-  Evaluated five machine learning models to predict PFOA removal efficiency by electrochemical oxidation, with Random Forest achieving optimal performance and electrolysis time identified as the most critical factor.
+abstract:  评估五种机器学习模型预测电化学氧化去除全氟辛酸效率，随机森林模型表现最优，电解时间是最关键影响因素。
+abstract_en:  Evaluated five machine learning models to predict PFOA removal efficiency by electrochemical oxidation, with Random Forest achieving optimal performance and electrolysis time identified as the most critical factor.
+
+`;
