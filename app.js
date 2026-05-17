@@ -433,8 +433,8 @@ const I18N = {
     "about.mission.5": "为机器学习、过程优化与材料筛选提供高质量、可复现的特征数据集",
     "research.title": "相关研究",
     "research.intro":
-      "在这个网页上，我们分享了一系列与电化学水处理相关的机器学习和深度学习文章以及高质量的综述。您可以使用每个条目下提供的链接下载这些数据集。",
-    "research.download": "下载数据集",
+      "在这个网页上，我们分享了一系列与电化学水处理相关的机器学习/深度学习文章和高质量综述。您可以使用每个条目下提供的链接访问这些文章/数据集。",
+    "research.download": "DOI链接",
     "research.loading": "正在加载研究条目…",
     "research.empty": "未能读取研究数据。请编辑项目根目录的 research-data.js，保存后按 F5 刷新。",
     "about.team.title": "核心团队",
