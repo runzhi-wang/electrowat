@@ -18,7 +18,7 @@ const DOMAINS = [
     abbr: "EO",
     titleZh: "电化学氧化",
     titleEn: "Electrochemical Oxidation",
-    count: "4,218",
+    count: "12,218",
     descZh:
       "羟基自由基、活性氯等间接氧化路径，涵盖 BDD、DSA 等阳极体系。平台系统收录电流密度、电解质组成、pH 与污染物初始浓度等关键工艺参数，并关联降解中间产物与矿化程度指标。支持跨文献、跨阳极材料的去除率与比能耗对比，服务于反应路径甄别、工艺优化与放大设计。",
     descEn:
@@ -28,7 +28,7 @@ const DOMAINS = [
     abbr: "EF",
     titleZh: "电芬顿",
     titleEn: "Electro-Fenton",
-    count: "2,156",
+    count: "5,156",
     descZh:
       "以 Fe²⁺/Fe³⁺ 催化 H₂O₂ 原位生成为核心，面向抗生素、染料等难降解有机污染物。涵盖石墨、碳纤维及气体扩散电极等阴极构型，记录 pH、溶解氧、Fe 盐投加量与阴极电位等变量。区分均相与异相电芬顿体系，便于评估羟基自由基贡献、铁泥副产物与能耗权衡。",
     descEn:
@@ -38,7 +38,7 @@ const DOMAINS = [
     abbr: "ER",
     titleZh: "电化学还原",
     titleEn: "Electrochemical Reduction",
-    count: "934",
+    count: "7,734",
     descZh:
       "利用阴极还原实现卤代有机物脱卤、硝酸盐脱氮与重金属形态调控。收录 Cu、Sn、Pd 及复合催化阴极在不同 pH 与共存离子条件下的效能数据。关联电子转移数、副产物分布与电极稳定性，支撑还原路径机理解析与反应器选型。",
     descEn:
@@ -48,7 +48,7 @@ const DOMAINS = [
     abbr: "EC",
     titleZh: "电絮凝",
     titleEn: "Electrocoagulation",
-    count: "1,892",
+    count: "8,892",
     descZh:
       "通过铝、铁等牺牲性阳极溶解形成氢氧化物絮体，去除悬浮物、胶体与部分重金属离子。记录极板间距、电流密度、停留时间与水质参数对絮体粒径、Zeta 电位的影响。适用于预处理与物化联合工艺，可与膜分离、过滤等单元衔接评价整体去除效果。",
     descEn:
@@ -58,7 +58,7 @@ const DOMAINS = [
     abbr: "CDI",
     titleZh: "电容去离子",
     titleEn: "Capacitive Deionization",
-    count: "601",
+    count: "3,601",
     descZh:
       "利用多孔碳电极双电层吸附—脱附实现低能耗选择性脱盐，适用于苦咸水与工业低浓度离子废水。收录电极比电容、充电电压窗口、循环稳定性与再生效率等参数。可区分恒压/恒流模式及与电渗析、反渗透的耦合工况，支撑模块化除盐方案比选。",
     descEn:
@@ -68,7 +68,7 @@ const DOMAINS = [
     abbr: "ED",
     titleZh: "电渗析",
     titleEn: "Electrodialysis",
-    count: "1,104",
+    count: "5,104",
     descZh:
       "基于离子选择性膜的电场驱动分离，实现苦咸水淡化与工业废水浓缩回用。涵盖异质膜堆叠构型、浓缩倍率、电流效率与水回收率等运行指标。数据库关联膜电阻、极化电压与无机盐结垢风险，辅助淡化系统设计、能耗核算与运行维护策略制定。",
     descEn:
@@ -153,9 +153,9 @@ const TEAM_UNITS = [
 const TEAM_SUPPORT = [
   { name: "钟宝怡", photoBase: "钟宝怡", initials: "ZBY", roleKey: "team.support.r3" },
   { name: "赵梓棠", photoBase: "赵梓棠", initials: "ZZT", roleKey: "team.support.r2" },
-  { name: "李金阔", photoBase: "李金阔", initials: "LJK", roleKey: "team.support.r1" },
   { name: "蔡正扬", photoBase: "蔡正扬", initials: "CZY", roleKey: "team.support.r4" },
   { name: "肖柯岩", photoBase: "肖柯岩", initials: "XKY", roleKey: "team.support.r5" },
+  { name: "李金阔", photoBase: "李金阔", initials: "LJK", roleKey: "team.support.r1" },
   { name: "葛桓宇", photoBase: "葛桓宇", initials: "GHY", roleKey: "team.support.r6" },
   { name: "廖甜甜", photoBase: "廖甜甜", initials: "LTT", roleKey: "team.support.r7" },
 ];
@@ -454,12 +454,12 @@ const I18N = {
     "team.lead.r4": "领衔顾问，行业专家",
     "team.lead.b4": "未来绿色低碳城乡水系统",
     "team.support.r1": "实验研究员",
-    "team.support.r2": "数据架构师",
+    "team.support.r2": "数据挖掘师",
     "team.support.r3": "算法工程师",
-    "team.support.r4": "数据挖掘",
-    "team.support.r5": "数据核验",
-    "team.support.r6": "数据收集",
-    "team.support.r7": "数据收集",
+    "team.support.r4": "文献检索师",
+    "team.support.r5": "数据核验师",
+    "team.support.r6": "数据采集员",
+    "team.support.r7": "数据采集员",
   },
   en: {
     "hero.eyebrow": "Open Science · Electrochemical Water Treatment",
@@ -901,6 +901,149 @@ function initCanvas() {
   window.addEventListener("resize", resize);
 }
 
+function initHeroStatsCanvas() {
+  const block = document.querySelector(".hero-stats-block");
+  const canvas = document.getElementById("hero-stats-canvas");
+  if (!block || !canvas) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const ctx = canvas.getContext("2d");
+  let w = 0;
+  let h = 0;
+  let particles = [];
+  let rafId = 0;
+  let tick = 0;
+
+  const accentRgb = () =>
+    document.documentElement.getAttribute("data-theme") === "light" ? "45, 90, 140" : "77, 163, 255";
+
+  function spawnParticles() {
+    const count = Math.min(48, Math.max(28, Math.floor((w * h) / 5200)));
+    particles = Array.from({ length: count }, () => {
+      const speed = reduceMotion ? 0.08 : 0.25 + Math.random() * 0.35;
+      const angle = Math.random() * Math.PI * 2;
+      return {
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        baseR: 1.6 + Math.random() * 2.2,
+        pulse: Math.random() * Math.PI * 2,
+        pulseSpeed: 0.035 + Math.random() * 0.03,
+        phase: Math.random() * Math.PI * 2,
+        driftAmp: 0.35 + Math.random() * 0.55,
+      };
+    });
+  }
+
+  function resize() {
+    const rect = block.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = Math.max(1, Math.floor(rect.width));
+    h = Math.max(1, Math.floor(rect.height));
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    canvas.style.width = `${w}px`;
+    canvas.style.height = `${h}px`;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    spawnParticles();
+  }
+
+  function bounceParticle(p) {
+    const pad = p.baseR + 2;
+    if (p.x < pad) {
+      p.x = pad;
+      p.vx = Math.abs(p.vx) * 0.92;
+    } else if (p.x > w - pad) {
+      p.x = w - pad;
+      p.vx = -Math.abs(p.vx) * 0.92;
+    }
+    if (p.y < pad) {
+      p.y = pad;
+      p.vy = Math.abs(p.vy) * 0.92;
+    } else if (p.y > h - pad) {
+      p.y = h - pad;
+      p.vy = -Math.abs(p.vy) * 0.92;
+    }
+    const minSpeed = reduceMotion ? 0.05 : 0.18;
+    const sp = Math.hypot(p.vx, p.vy) || minSpeed;
+    if (sp < minSpeed) {
+      const scale = minSpeed / sp;
+      p.vx *= scale;
+      p.vy *= scale;
+    }
+  }
+
+  function drawParticle(p, accent) {
+    const pulse = Math.sin(p.pulse);
+    const r = p.baseR * (1 + 0.28 * pulse);
+    const coreAlpha = reduceMotion ? 0.42 : 0.52 + pulse * 0.18;
+
+    const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * 3.2);
+    glow.addColorStop(0, `rgba(${accent}, ${coreAlpha * 0.55})`);
+    glow.addColorStop(0.45, `rgba(${accent}, ${coreAlpha * 0.2})`);
+    glow.addColorStop(1, `rgba(${accent}, 0)`);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, r * 3.2, 0, Math.PI * 2);
+    ctx.fillStyle = glow;
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${accent}, ${coreAlpha})`;
+    ctx.fill();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    const accent = accentRgb();
+    const linkDist = Math.min(150, Math.max(95, w * 0.2));
+    tick += 1;
+    const t = tick * 0.016;
+
+    particles.forEach((p, i) => {
+      if (!reduceMotion) {
+        p.x += p.vx + Math.sin(t * 1.1 + p.phase) * p.driftAmp * 0.08;
+        p.y += p.vy + Math.cos(t * 0.95 + p.phase) * p.driftAmp * 0.08;
+        p.pulse += p.pulseSpeed;
+        bounceParticle(p);
+      } else {
+        p.pulse += 0.01;
+      }
+    
+      drawParticle(p, accent);
+    
+      for (let j = i + 1; j < particles.length; j++) {
+        const q = particles[j];
+        const dist = Math.hypot(p.x - q.x, p.y - q.y);
+        if (dist < linkDist) {
+          const lineA = (reduceMotion ? 0.12 : 0.22) * (1 - dist / linkDist);
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = `rgba(${accent}, ${lineA})`;
+          ctx.lineWidth = 0.85;
+          ctx.stroke();
+        }
+      }
+    });
+    
+    rafId = requestAnimationFrame(draw);
+  }
+
+  const ro = new ResizeObserver(() => resize());
+  ro.observe(block);
+  requestAnimationFrame(() => {
+    resize();
+    draw();
+  });
+
+  window.addEventListener("beforeunload", () => {
+    cancelAnimationFrame(rafId);
+    ro.disconnect();
+  });
+}
+
 function renderTable(rows) {
   const tbody = document.getElementById("table-body");
   const countEl = document.getElementById("result-count");
@@ -1268,6 +1411,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initAppRouter();
   initTheme();
   initCanvas();
+  initHeroStatsCanvas();
   initExplorer();
   initDomains();
   initCharts();

@@ -447,12 +447,58 @@ html[lang="en"] .hero-copy .hero-lead {
 }
 
 .hero-stats-block {
+  position: relative;
   margin-top: 0;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border);
+  padding: 2.35rem 1.75rem 2.1rem;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg-panel) 72%, transparent);
+}
+
+.hero-stats-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-stats-bg__gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 85% 75% at 48% 35%, rgba(77, 163, 255, 0.14) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 45% at 92% 85%, rgba(120, 190, 255, 0.08) 0%, transparent 48%),
+    radial-gradient(ellipse 40% 40% at 8% 70%, rgba(77, 163, 255, 0.07) 0%, transparent 42%),
+    linear-gradient(180deg, rgba(77, 163, 255, 0.06) 0%, transparent 45%, transparent 100%);
+}
+
+[data-theme="light"] .hero-stats-block {
+  background: #f5f5f7;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .hero-stats-bg__gradient {
+  background:
+    radial-gradient(ellipse 90% 80% at 50% 40%, rgba(255, 255, 255, 0.95) 0%, transparent 55%),
+    linear-gradient(180deg, #ffffff 0%, #f0f0f2 100%);
+}
+
+#hero-stats-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 1;
+  z-index: 1;
 }
 
 .hero-stats {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
@@ -497,13 +543,20 @@ html[lang="en"] .hero-copy .hero-lead {
   margin: 0;
   line-height: 1;
   text-align: center;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero-stats-block .stat-num {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-stats dd {
   margin: 0.5rem 0 0;
   font-size: 0.8125rem;
-  font-weight: 400;
-  color: var(--text-dim);
+  font-weight: 600;
+  color: var(--text-muted);
   letter-spacing: -0.01em;
   text-align: center;
 }
