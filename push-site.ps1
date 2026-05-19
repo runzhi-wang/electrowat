@@ -23,6 +23,17 @@ function Fail([string]$text) {
     exit 1
 }
 
+function Clear-StaleGitLock {
+    $lock = Join-Path $ProjectRoot ".git\index.lock"
+    if (-not (Test-Path $lock)) { return }
+    Write-Host ""
+    Write-Host "Removing stale .git/index.lock (left by a crashed or interrupted git run)..." -ForegroundColor Yellow
+    Remove-Item $lock -Force -ErrorAction SilentlyContinue
+    if (Test-Path $lock) {
+        Fail "Could not remove .git/index.lock. Close other Git/Cursor windows and delete the file manually."
+    }
+}
+
 $script:GitLastOutput = @()
 
 function Invoke-Git {
@@ -109,6 +120,7 @@ if (-not $Message.Trim()) {
 }
 
 Write-Step "git add ."
+Clear-StaleGitLock
 if ((Invoke-Git add .) -ne 0) { Fail "git add failed" }
 
 Write-Step "git commit"

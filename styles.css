@@ -343,11 +343,16 @@ main, .site-header, .site-footer {
 .btn-sm { padding: 0.35rem 0.85rem; font-size: 0.8rem; }
 .btn-block { width: 100%; }
 
+main#top {
+  padding-top: 0;
+  margin-top: 0;
+}
+
 /* Hero */
 .hero {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 4rem 2rem 4.5rem;
+  padding: 1rem 2rem 4.5rem;
 }
 
 .hero-panel {
@@ -473,8 +478,6 @@ html[lang="en"] .hero-copy .hero-lead {
   line-height: 1.58;
   color: var(--text-dim);
   letter-spacing: -0.01em;
-  text-align: justify;
-  text-justify: inter-ideograph;
 }
 
 html[lang="en"] .hero-fair-note {
