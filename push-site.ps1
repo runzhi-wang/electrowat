@@ -5,10 +5,10 @@
 
 param(
     [Parameter(Position = 0)]
-    [string]$Message = ""
+    [string]$Message = "",
+    [switch]$Interactive
 )
 
-$ErrorActionPreference = "Stop"
 $ProjectRoot = $PSScriptRoot
 Set-Location $ProjectRoot
 
@@ -23,6 +23,47 @@ function Fail([string]$text) {
     exit 1
 }
 
+$script:GitLastOutput = @()
+
+function Invoke-Git {
+    param([Parameter(ValueFromRemainingArguments = $true)][string[]]$GitArgs)
+    $prev = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $out = & git @GitArgs 2>&1
+    $code = $LASTEXITCODE
+    $ErrorActionPreference = $prev
+    $script:GitLastOutput = @($out)
+    foreach ($line in $out) {
+        if ($line -is [System.Management.Automation.ErrorRecord]) {
+            Write-Host $line.ToString()
+        } else {
+            Write-Host $line
+        }
+    }
+    return $code
+}
+
+function Test-GitHasLocalChanges {
+    if ((Invoke-Git status --porcelain) -ne 0) {
+        Fail "git status failed"
+    }
+    foreach ($line in $script:GitLastOutput) {
+        if ($line -is [string] -and $line.Trim()) {
+            return $true
+        }
+    }
+    return $false
+}
+
+function Get-GitLastLine {
+    foreach ($line in $script:GitLastOutput) {
+        if ($line -is [string] -and $line.Trim()) {
+            return $line.Trim()
+        }
+    }
+    return ""
+}
+
 Write-Host "ElectroWat DB - Git upload" -ForegroundColor Green
 Write-Host "Folder: $ProjectRoot"
 
@@ -35,46 +76,53 @@ if (-not (Test-Path (Join-Path $ProjectRoot ".git"))) {
 }
 
 Write-Step "Check changes"
-$status = git status --porcelain
-if (-not $status) {
+if (-not (Test-GitHasLocalChanges)) {
     Write-Host ""
     Write-Host "No local changes to commit." -ForegroundColor Yellow
     Write-Step "git push (if commits pending)"
-    git push 2>&1 | Out-Host
-    if ($LASTEXITCODE -eq 0) {
-        Write-Host ""
-        Write-Host "[OK] Already in sync with remote." -ForegroundColor Green
+    $pushCode = Invoke-Git push
+    if ($pushCode -ne 0) {
+        Fail "git push failed. Check network, GitHub login, and remote origin."
+    }
+    Write-Host ""
+    Write-Host "[OK] Already in sync with remote (Everything up-to-date is normal)." -ForegroundColor Green
+    if ((Invoke-Git remote get-url origin) -eq 0) {
+        $remote = Get-GitLastLine
+        if ($remote) { Write-Host "Remote: $remote" }
     }
     exit 0
 }
 
 if (-not $Message.Trim()) {
     $default = "Update site " + (Get-Date -Format "yyyy-MM-dd HH:mm")
-    $input = Read-Host "Commit message (Enter for default)"
-    if ($input -and $input.Trim()) {
-        $Message = $input.Trim()
+    if ($Interactive) {
+        $input = Read-Host "Commit message (Enter for default)"
+        if ($input -and $input.Trim()) {
+            $Message = $input.Trim()
+        } else {
+            $Message = $default
+        }
     } else {
         $Message = $default
+        Write-Host "Commit message: $Message" -ForegroundColor DarkGray
     }
 }
 
 Write-Step "git add ."
-git add .
-if ($LASTEXITCODE -ne 0) { Fail "git add failed" }
+if ((Invoke-Git add .) -ne 0) { Fail "git add failed" }
 
 Write-Step "git commit"
-git commit -m $Message
-if ($LASTEXITCODE -ne 0) { Fail "git commit failed" }
+if ((Invoke-Git commit -m $Message) -ne 0) { Fail "git commit failed" }
 
 Write-Step "git push"
-git push
-if ($LASTEXITCODE -ne 0) {
+if ((Invoke-Git push) -ne 0) {
     Fail "git push failed. Check network, GitHub login, and remote origin."
 }
 
 Write-Host ""
 Write-Host "[OK] Pushed to GitHub. Pages may update in 1-3 minutes." -ForegroundColor Green
-$remote = git remote get-url origin 2>$null
-if ($remote) {
-    Write-Host "Remote: $remote"
+if ((Invoke-Git remote get-url origin) -eq 0) {
+    $remoteUrl = Get-GitLastLine
+    if ($remoteUrl) { Write-Host "Remote: $remoteUrl" }
 }
+exit 0

@@ -354,9 +354,11 @@ const I18N = {
     "hero.title1": "电化学水处理全球数据平台",
     "hero.cover.alt": "ElectroWat DB 封面",
     "hero.lead1":
-      "ElectroWat DB 面向全球环境电化学与水处理社区，系统整合电极材料、反应器构型、工艺参数及污染物降解动力学等多源实验与文献证据，建设大规模、结构化、机器可读并遵循 FAIR 原则的开放数据库。平台以大语言模型辅助文献挖掘、自动字段抽取与语义关联，将分散的知识转化为可编程访问、可批量分析与可模型训练的数据资源。",
+      "ElectroWat DB 面向全球环境电化学与水处理社区，系统整合电极材料、反应器构型、工艺参数及污染物降解指标等多源实验与文献证据，构建了符合 FAIR 原则的大规模、结构化开放数据库。依托AI驱动的知识挖掘框架，实现了自动信息抽取、语义关联与数据标准化，将分散科研信息转化为可分析、可共享、可模型训练的数据资源。",
     "hero.lead2":
-      "在自动化管线之上，每一条关键记录均经领域专家复核、质量标注与可追溯管理，保障跨研究组对比的可复现性与学术引用规范。我们愿以这一基础设施贯通基础研究与工程应用，加速科学发现与工艺迭代，全面赋能人工智能与数据驱动的科研范式（AI4Science），为绿色、低碳、可持续的水处理技术创新提供坚实底座。",
+      "作为面向 AI4Science 的环境电化学数据基础设施，ElectroWat DB 可支撑污染物去除效能与动力学参数精准预测、电极材料逆向设计、工艺参数优化、反应路径及机制挖掘，以及研究趋势与知识网络的定量分析，为机器学习驱动的科学发现、工艺放大和智能水系统开发提供高质量数据支撑，推动环境电化学领域从经验试错向数据驱动的智能设计范式转变，最终加速可持续水处理技术的创新与应用。",
+    "hero.fair":
+      "FAIR原则是科学数据管理的国际准则，强调数据应可发现（Findable）、可访问（Accessible）、可互操作（Interoperable）和可重用（Reusable）。",
     "hero.cta1": "检索数据集",
     "hero.cta2": "如何引用",
     "stat.records": "实验记录",
@@ -466,9 +468,11 @@ const I18N = {
     "hero.title1": "Global Electrochemical Water Treatment Data Platform",
     "hero.cover.alt": "ElectroWat DB cover",
     "hero.lead1":
-      "ElectroWat DB serves the global environmental electrochemistry and water-treatment community by harmonizing experimental and literature evidence on electrode materials, reactor designs, process variables, and degradation kinetics into a large-scale, structured, machine-readable open database aligned with FAIR principles. Large language models accelerate literature mining, field extraction, and semantic linking—turning fragmented knowledge into programmatic, analytics-ready, and model-trainable data assets.",
+      "ElectroWat DB serves the global environmental electrochemistry and water-treatment community by harmonizing multi-source experimental and literature evidence on electrode materials, reactor configurations, process parameters, and pollutant degradation metrics into a large-scale, structured, machine-readable open database and data infrastructure. Powered by WaterSeek, an LLM-driven literature-mining framework, the platform automates field extraction, semantic linking, and knowledge standardization—turning fragmented research into programmatic, batch-analyzable, model-trainable data assets.",
     "hero.lead2":
-      "On top of this automated pipeline, domain experts verify, annotate, and curate every critical record for reproducible cross-lab comparison and rigorous citation. We aim to connect fundamental research with engineering practice, accelerate scientific discovery and process iteration, and empower AI- and data-driven research (AI4Science) toward green, low-carbon, and sustainable water treatment innovation.",
+      "On an automated data pipeline, every critical record is domain-expert reviewed, quality-annotated, and fully traceable for reproducible cross-laboratory comparison and rigorous citation. As environmental electrochemistry infrastructure for AI4Science, ElectroWat DB supports removal and rate-constant prediction, inverse design of electrodes and catalysts, process and energy optimization, mechanism mining, and quantitative mapping of research trends and knowledge networks—empowering ML- and LLM-driven discovery. It also provides a unified foundation for data-driven scale-up, intelligent decisions, and digital water-treatment systems, accelerating the shift from trial-and-error to predictive design for green, low-carbon, sustainable water treatment.",
+    "hero.fair":
+      "FAIR is an international guideline for scientific data management: data should be Findable, Accessible, Interoperable, and Reusable.",
     "hero.cta1": "Explore Datasets",
     "hero.cta2": "How to Cite",
     "stat.records": "Experimental Records",
@@ -582,23 +586,34 @@ function getThemeColor(varName) {
   return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
 }
 
+const THEME_ICON_SUN =
+  '<svg class="btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
+const THEME_ICON_MOON =
+  '<svg class="btn-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
 function updateThemeToggle() {
   const btn = document.getElementById("theme-toggle");
   const dict = I18N[lang];
   if (!btn) return;
   if (theme === "dark") {
-    btn.textContent = dict["theme.toLight"] || "浅色";
+    btn.innerHTML = THEME_ICON_SUN;
     btn.setAttribute("aria-label", dict["theme.ariaLight"] || "切换浅色主题");
+    btn.setAttribute("title", dict["theme.toLight"] || "浅色");
   } else {
-    btn.textContent = dict["theme.toDark"] || "深色";
+    btn.innerHTML = THEME_ICON_MOON;
     btn.setAttribute("aria-label", dict["theme.ariaDark"] || "切换深色主题");
+    btn.setAttribute("title", dict["theme.toDark"] || "深色");
   }
 }
 
 function setTheme(next) {
   theme = next === "light" ? "light" : "dark";
   document.documentElement.setAttribute("data-theme", theme);
-  localStorage.setItem("ew-theme", theme);
+  try {
+    localStorage.setItem("ew-theme", theme);
+  } catch {
+    /* private browsing */
+  }
   updateThemeToggle();
 
   const canvas = document.getElementById("field-canvas");
@@ -608,8 +623,22 @@ function setTheme(next) {
 }
 
 function initTheme() {
-  const stored = localStorage.getItem("ew-theme");
-  theme = stored === "light" ? "light" : "dark";
+  let stored = null;
+  try {
+    stored = localStorage.getItem("ew-theme");
+  } catch {
+    stored = null;
+  }
+  if (stored !== "light" && stored !== "dark") {
+    theme = "dark";
+    try {
+      localStorage.setItem("ew-theme", "dark");
+    } catch {
+      /* ignore */
+    }
+  } else {
+    theme = stored;
+  }
   document.documentElement.setAttribute("data-theme", theme);
   updateThemeToggle();
 
@@ -654,8 +683,19 @@ function setNavActive(target) {
   });
 }
 
+function isReloadNavigation() {
+  const entry = performance.getEntriesByType("navigation")[0];
+  return entry?.type === "reload";
+}
+
 function scrollToSection(id) {
   if (currentView !== "home") return;
+  if (!id || id === "top") {
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    document.documentElement.style.scrollBehavior = "";
+    return;
+  }
   const home = document.getElementById("view-home");
   const el = home?.querySelector(`#${CSS.escape(id)}`) || document.getElementById(id);
   if (el && home?.contains(el)) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -693,7 +733,11 @@ function showView(view, sectionId) {
   const target = sectionId || "top";
   setNavActive(target);
   updateDocumentTitle();
-  requestAnimationFrame(() => scrollToSection(target));
+  if (target === "top") {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  } else {
+    requestAnimationFrame(() => scrollToSection(target));
+  }
 }
 
 function isResearchHash(hash) {
@@ -707,10 +751,24 @@ function handleRoute() {
     history.replaceState(null, "", "#related-research");
   }
   if (isResearchHash(hash)) showView("research");
-  else showView("home", hash || "top");
+  else {
+    let section = hash || "top";
+    if (isReloadNavigation()) {
+      section = "top";
+      if (hash && hash !== "top") history.replaceState(null, "", "#top");
+    }
+    showView("home", section);
+  }
 }
 
 function initAppRouter() {
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+
+  window.addEventListener("pageshow", () => {
+    if (isResearchHash((location.hash || "").slice(1))) return;
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  });
+
   document.querySelector(".brand")?.addEventListener("click", (e) => {
     e.preventDefault();
     location.hash = "top";
@@ -746,7 +804,7 @@ function initNavHighlight() {
   const onScroll = () => {
     if (currentView !== "home") return;
     let current = "top";
-    const offset = 120;
+    const offset = 140;
     sections.forEach((sec) => {
       if (sec.getBoundingClientRect().top <= offset) current = sec.id;
     });
@@ -1374,7 +1432,12 @@ function initCharts() {
 }
 
 function setLang(next) {
-  lang = next;
+  lang = next === "en" ? "en" : "zh";
+  try {
+    localStorage.setItem("ew-lang", lang);
+  } catch {
+    /* private browsing */
+  }
   const dict = I18N[lang];
   document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
   document.querySelectorAll("[data-i18n]").forEach((el) => {
@@ -1401,6 +1464,13 @@ function setLang(next) {
 }
 
 function initI18n() {
+  let storedLang = null;
+  try {
+    storedLang = localStorage.getItem("ew-lang");
+  } catch {
+    storedLang = null;
+  }
+  lang = storedLang === "en" ? "en" : "zh";
   document.getElementById("lang-toggle")?.addEventListener("click", () => {
     setLang(lang === "zh" ? "en" : "zh");
   });
@@ -1408,6 +1478,7 @@ function initI18n() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   initAppRouter();
   initTheme();
   initCanvas();

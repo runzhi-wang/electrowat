@@ -3,7 +3,7 @@
 :root {
   --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   --mono: "SF Mono", ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
-  --header-h: 52px;
+  --header-h: 72px;
   --radius: 10px;
   --radius-lg: 18px;
   --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -323,6 +323,22 @@ main, .site-header, .site-footer {
 
 .btn-ghost:hover { color: var(--accent); border-color: var(--border-bright); }
 
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  min-width: 2.5rem;
+}
+
+.btn-icon .btn-icon-svg {
+  display: block;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
 .btn-lg { padding: 0.75rem 1.75rem; font-size: 0.95rem; }
 .btn-sm { padding: 0.35rem 0.85rem; font-size: 0.8rem; }
 .btn-block { width: 100%; }
@@ -337,9 +353,10 @@ main, .site-header, .site-footer {
 .hero-panel {
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(300px, 1.08fr);
+  grid-template-rows: auto auto;
   align-items: center;
   gap: 0;
-  margin-bottom: 2.75rem;
+  margin-bottom: 1.75rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -353,14 +370,18 @@ main, .site-header, .site-footer {
 }
 
 .hero-copy {
+  grid-column: 1;
+  grid-row: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem 2.25rem 2.1rem;
+  padding: 2rem 2.25rem 0;
   min-width: 0;
 }
 
 .hero-visual {
+  grid-column: 2;
+  grid-row: 1;
   margin: 0;
   position: relative;
   align-self: center;
@@ -371,6 +392,13 @@ main, .site-header, .site-footer {
   padding: 1rem 1.15rem;
   box-sizing: border-box;
   background: color-mix(in srgb, var(--bg) 60%, var(--surface));
+}
+
+.hero-actions {
+  grid-column: 1;
+  grid-row: 2;
+  padding: 0.75rem 2.25rem 2.1rem;
+  min-width: 0;
 }
 
 .hero-cover {
@@ -385,13 +413,14 @@ main, .site-header, .site-footer {
   box-shadow: none;
 }
 
-.hero-copy .eyebrow {
+.hero-eyebrow {
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--text-dim);
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.5rem;
+  padding: 0 0.15rem;
 }
 
 .hero h1 {
@@ -414,6 +443,8 @@ main, .site-header, .site-footer {
   font-weight: 400;
   letter-spacing: -0.018em;
   line-height: 1.62;
+  text-align: justify;
+  text-justify: inter-ideograph;
 }
 
 html[lang="en"] .hero-copy h1 {
@@ -428,13 +459,27 @@ html[lang="en"] .hero-copy .hero-lead {
   letter-spacing: -0.012em;
 }
 
-.hero-lead + .hero-lead {
-  margin-top: 0.85rem;
-  margin-bottom: 1.35rem;
+.hero-lead + .hero-lead,
+.hero-lead + .hero-fair-note {
+  margin-top: 0.6rem;
+  margin-bottom: 0;
 }
 
-.hero-copy .hero-lead:last-of-type {
-  margin-bottom: 1.35rem;
+.hero-fair-note {
+  margin: 0;
+  max-width: 36em;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  line-height: 1.58;
+  color: var(--text-dim);
+  letter-spacing: -0.01em;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+html[lang="en"] .hero-fair-note {
+  font-size: 0.625rem;
+  line-height: 1.55;
 }
 
 .hero-cta {
@@ -442,14 +487,13 @@ html[lang="en"] .hero-copy .hero-lead {
   flex-wrap: wrap;
   gap: 0.75rem;
   margin: 0;
-  margin-top: auto;
-  padding-top: 0.25rem;
+  padding-top: 0;
 }
 
 .hero-stats-block {
   position: relative;
   margin-top: 0;
-  padding: 2.35rem 1.75rem 2.1rem;
+  padding: 1.5rem 1.75rem 1.85rem;
   border-radius: var(--radius-lg);
   overflow: hidden;
   isolation: isolate;
@@ -510,22 +554,29 @@ html[lang="en"] .hero-copy .hero-lead {
 @media (max-width: 900px) {
   .hero-panel {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
   }
 
   .hero-copy {
-    padding: 1.5rem 1.35rem 1.35rem;
+    grid-column: 1;
+    grid-row: 1;
+    padding: 1.5rem 1.35rem 0;
   }
 
   .hero-visual {
+    grid-column: 1;
+    grid-row: 2;
     padding: 0.75rem 1rem;
+  }
+
+  .hero-actions {
+    grid-column: 1;
+    grid-row: 3;
+    padding: 0.75rem 1.35rem 1.35rem;
   }
 
   .hero-cover {
     max-height: min(42vh, 320px);
-  }
-
-  .hero-cta {
-    margin-top: 0;
   }
 }
 
@@ -559,6 +610,10 @@ html[lang="en"] .hero-copy .hero-lead {
   color: var(--text-muted);
   letter-spacing: -0.01em;
   text-align: center;
+}
+
+[data-theme="dark"] .hero-stats dd {
+  color: #ffffff;
 }
 
 /* Sections */
