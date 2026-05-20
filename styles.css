@@ -352,14 +352,14 @@ main#top {
 .hero {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 1rem 2rem 4.5rem;
+  padding: 2.25rem 2rem 4.5rem;
 }
 
 .hero-panel {
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(300px, 1.08fr);
   grid-template-rows: auto auto;
-  align-items: center;
+  align-items: stretch;
   gap: 0;
   margin-bottom: 1.75rem;
   border: 1px solid var(--border);
@@ -386,15 +386,15 @@ main#top {
 
 .hero-visual {
   grid-column: 2;
-  grid-row: 1;
+  grid-row: 1 / 3;
   margin: 0;
   position: relative;
-  align-self: center;
+  align-self: stretch;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   width: 100%;
-  padding: 1rem 1.15rem;
+  padding: 1rem 1.15rem 3.35rem;
   box-sizing: border-box;
   background: color-mix(in srgb, var(--bg) 60%, var(--surface));
 }
@@ -402,7 +402,7 @@ main#top {
 .hero-actions {
   grid-column: 1;
   grid-row: 2;
-  padding: 0.75rem 2.25rem 2.1rem;
+  padding: 1.15rem 2.25rem 2.1rem;
   min-width: 0;
 }
 
@@ -412,7 +412,7 @@ main#top {
   height: auto;
   max-height: min(52vh, 480px);
   object-fit: contain;
-  object-position: center;
+  object-position: center bottom;
   border: none;
   border-radius: 0;
   box-shadow: none;
@@ -434,6 +434,7 @@ main#top {
   line-height: 1.15;
   margin: 0 0 0.85rem;
   letter-spacing: -0.035em;
+  max-width: 36em;
 }
 
 .hero h1 em {
@@ -453,36 +454,22 @@ main#top {
 }
 
 html[lang="en"] .hero-copy h1 {
-  font-size: clamp(1.6rem, 2.9vw, 2.1rem);
+  font-size: clamp(1.45rem, 2.55vw, 1.85rem);
   line-height: 1.16;
   letter-spacing: -0.032em;
+  max-width: 44em;
 }
 
 html[lang="en"] .hero-copy .hero-lead {
-  font-size: 0.875rem;
-  line-height: 1.58;
-  letter-spacing: -0.012em;
+  font-size: 0.75rem;
+  line-height: 1.54;
+  letter-spacing: -0.008em;
+  max-width: 44em;
 }
 
-.hero-lead + .hero-lead,
-.hero-lead + .hero-fair-note {
+.hero-lead + .hero-lead {
   margin-top: 0.6rem;
   margin-bottom: 0;
-}
-
-.hero-fair-note {
-  margin: 0;
-  max-width: 36em;
-  font-size: 0.6875rem;
-  font-weight: 400;
-  line-height: 1.58;
-  color: var(--text-dim);
-  letter-spacing: -0.01em;
-}
-
-html[lang="en"] .hero-fair-note {
-  font-size: 0.625rem;
-  line-height: 1.55;
 }
 
 .hero-cta {
@@ -569,13 +556,14 @@ html[lang="en"] .hero-fair-note {
   .hero-visual {
     grid-column: 1;
     grid-row: 2;
+    align-items: center;
     padding: 0.75rem 1rem;
   }
 
   .hero-actions {
     grid-column: 1;
     grid-row: 3;
-    padding: 0.75rem 1.35rem 1.35rem;
+    padding: 1.15rem 1.35rem 1.35rem;
   }
 
   .hero-cover {
@@ -608,7 +596,7 @@ html[lang="en"] .hero-fair-note {
 
 .hero-stats dd {
   margin: 0.5rem 0 0;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-muted);
   letter-spacing: -0.01em;

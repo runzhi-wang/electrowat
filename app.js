@@ -350,15 +350,13 @@ const POLLUTANT_BOX = [
 
 const I18N = {
   zh: {
-    "hero.eyebrow": "开放科学 · 电化学水处理",
+    "hero.eyebrow": "开放科学 · 环境电化学数据",
     "hero.title1": "电化学水处理全球数据平台",
     "hero.cover.alt": "ElectroWat DB 封面",
     "hero.lead1":
-      "ElectroWat DB 面向全球环境电化学与水处理科学社区，系统整合电极材料、反应器构型、工艺参数及降解效能等多源异构数据与文献证据，构建了符合 FAIR 原则的大规模、结构化开放数据库。依托AI驱动的知识挖掘框架，平台实现了跨文献的自动信息抽取、语义关联与数据标准化，将长期分散的科研信息转化为可分析、可建模的高价值数据资源，有效解决了领域数据碎片化与复用率低的关键瓶颈。",
+      "ElectroWat DB 面向全球环境电化学与水处理科学社区，系统整合电极材料、反应器构型、工艺参数及降解效能等多源数据与文献证据，构建了大规模、结构化、机器可读的开放数据库。依托AI驱动的知识挖掘框架，平台实现了文献数据的的自动抽取与标准化，将长期分散的科研信息转化为可分析、可建模的高价值数据资源，有效解决了领域数据碎片化与复用率低的关键瓶颈。",
     "hero.lead2":
-      "作为面向 AI4Science 的专业数据基础设施，ElectroWat DB 可系统支持从污染物降解动力学参数预测、电极与工艺协同优化，到反应路径推与及机制解析，乃至领域知识网络与研究趋势的定量洞察。通过提供严格标准化与质量控制的可计算数据集，我们不仅赋能机器学习驱动的模型构建与科学发现，更致力于推动环境电化学领域从传统经验试错向数据驱动的科研范式根本性转变，最终加速可持续水处理技术的创新与应用。",
-    "hero.fair":
-      "FAIR原则是科学数据管理的国际准则，强调数据应可发现（Findable）、可访问（Accessible）、可互操作（Interoperable）和可重用（Reusable）。",
+      "作为面向 AI4Science 的专业数据基础设施，ElectroWat DB 可系统支持污染物降解动力学参数预测、电极与工艺协同优化、反应路径推与及机制解析，以及研究趋势分析。通过提供严格标准化与质量控制的可计算数据集，我们不仅赋能机器学习驱动的科学发现，更致力于推动环境电化学领域从经验试错向数据驱动的科研范式转变，最终加速可持续水处理技术的创新与应用。",
     "hero.cta1": "检索数据集",
     "hero.cta2": "如何引用",
     "stat.records": "实验记录",
@@ -464,15 +462,13 @@ const I18N = {
     "team.support.r7": "数据采集员",
   },
   en: {
-    "hero.eyebrow": "Open Science · Electrochemical Water Treatment",
+    "hero.eyebrow": "Open Science · Environmental Electrochemistry Data",
     "hero.title1": "Global Electrochemical Water Treatment Data Platform",
     "hero.cover.alt": "ElectroWat DB cover",
     "hero.lead1":
-      "ElectroWat DB serves the global environmental electrochemistry and water-treatment community by harmonizing multi-source experimental and literature evidence on electrode materials, reactor configurations, process parameters, and pollutant degradation metrics into a large-scale, structured, machine-readable open database and data infrastructure. Powered by WaterSeek, an LLM-driven literature-mining framework, the platform automates field extraction, semantic linking, and knowledge standardization—turning fragmented research into programmatic, batch-analyzable, model-trainable data assets.",
+      "ElectroWat DB serves the global environmental electrochemistry and water-treatment science community by systematically integrating multi-source data and literature evidence on electrode materials, reactor configurations, process parameters, and degradation performance into a large-scale, structured, machine-readable open database. Powered by an AI-driven knowledge-mining framework, the platform automates extraction and standardization of literature data, transforming long-scattered research information into high-value resources for analysis and modeling, and addressing critical bottlenecks of data fragmentation and low reusability in the field.",
     "hero.lead2":
-      "On an automated data pipeline, every critical record is domain-expert reviewed, quality-annotated, and fully traceable for reproducible cross-laboratory comparison and rigorous citation. As environmental electrochemistry infrastructure for AI4Science, ElectroWat DB supports removal and rate-constant prediction, inverse design of electrodes and catalysts, process and energy optimization, mechanism mining, and quantitative mapping of research trends and knowledge networks—empowering ML- and LLM-driven discovery. It also provides a unified foundation for data-driven scale-up, intelligent decisions, and digital water-treatment systems, accelerating the shift from trial-and-error to predictive design for green, low-carbon, sustainable water treatment.",
-    "hero.fair":
-      "FAIR is an international guideline for scientific data management: data should be Findable, Accessible, Interoperable, and Reusable.",
+      "As professional data infrastructure for AI4Science, ElectroWat DB systematically supports prediction of pollutant degradation kinetics, coordinated optimization of electrodes and processes, reaction-pathway inference and mechanistic interpretation, and research-trend analysis. By providing rigorously standardized, quality-controlled computational datasets, we empower machine-learning-driven scientific discovery and advance environmental electrochemistry from traditional trial-and-error toward data-driven research paradigms, ultimately accelerating innovation and application of sustainable water-treatment technologies.",
     "hero.cta1": "Explore Datasets",
     "hero.cta2": "How to Cite",
     "stat.records": "Experimental Records",
@@ -1477,17 +1473,19 @@ function initI18n() {
   setLang(lang);
 }
 
+function markAppReady() {
+  document.documentElement.classList.add("ew-ready");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  initAppRouter();
   initTheme();
+  initI18n();
+  initAppRouter();
   initCanvas();
   initHeroStatsCanvas();
   initExplorer();
-  initDomains();
-  initCharts();
   loadResearchFromFile();
-  renderTeam();
-  initI18n();
   initNavHighlight();
+  markAppReady();
 });

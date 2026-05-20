@@ -22,9 +22,11 @@
       if ("scrollRestoration" in history) history.scrollRestoration = "manual";
     })();
   </script>
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <style id="ew-boot">html:not(.ew-ready) body { visibility: hidden; }</style>
+  <link rel="stylesheet" href="styles.css?v=19" />
 </head>
 <body>
+  <noscript><style>html body { visibility: visible !important; }</style></noscript>
   <div class="grid-bg" aria-hidden="true"></div>
   <canvas id="field-canvas" aria-hidden="true"></canvas>
 
@@ -70,18 +72,15 @@
   <div id="view-home" class="site-view">
   <main id="top">
     <section class="hero">
-      <p class="hero-eyebrow" data-i18n="hero.eyebrow">开放科学 · 电化学水处理</p>
+      <p class="hero-eyebrow" data-i18n="hero.eyebrow">开放科学 · 环境电化学数据</p>
       <div class="hero-panel">
         <div class="hero-copy">
           <h1 data-i18n="hero.title1">电化学水处理全球数据平台</h1>
           <p class="hero-lead" data-i18n="hero.lead1">
-            ElectroWat DB 面向全球环境电化学与水处理社区，整合电极材料、反应器构型、工艺参数及污染物降解指标等多源实验与文献证据，构建符合 FAIR 原则的大规模、结构化开放数据库。依托AI驱动的知识挖掘框架，实现了自动信息抽取、语义关联与数据标准化，将分散科研信息转化为可分析、可共享、可模型训练的数据资源。
+            ElectroWat DB 面向全球环境电化学与水处理科学社区，系统整合电极材料、反应器构型、工艺参数及降解效能等多源数据与文献证据，构建了大规模、结构化、机器可读的开放数据库。依托AI驱动的知识挖掘框架，平台实现了文献数据的的自动抽取与标准化，将长期分散的科研信息转化为可分析、可建模的高价值数据资源，有效解决了领域数据碎片化与复用率低的关键瓶颈。
           </p>
           <p class="hero-lead" data-i18n="hero.lead2">
-            作为面向 AI4Science 的环境电化学数据基础设施，ElectroWat DB 可支撑污染物去除效能与反应速率常数预测、电极材料的逆向设计、工艺优化、机制挖掘、以及研究热点演变与知识网络的定量分析。平台进一步为机器学习驱动的科学发现、工艺放大和智能水系统开发提供数据底座，推动环境电化学领域从经验试错向数据驱动的智能范式转变。
-          </p>
-          <p class="hero-fair-note" data-i18n="hero.fair">
-            FAIR原则是科学数据管理的国际准则，强调数据应可发现（Findable）、可访问（Accessible）、可互操作（Interoperable）和可重用（Reusable）。
+            作为面向 AI4Science 的专业数据基础设施，ElectroWat DB 可系统支持污染物降解动力学参数预测、电极与工艺协同优化、反应路径推与及机制解析，以及研究趋势分析。通过提供严格标准化与质量控制的可计算数据集，我们不仅赋能机器学习驱动的模型构建与科学发现，更致力于推动环境电化学领域从传统经验试错向数据驱动的科研范式根本性转变，最终加速可持续水处理技术的创新与应用。
           </p>
         </div>
         <figure class="hero-visual">
@@ -359,6 +358,6 @@
 
   <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
   <script src="research-data.js?v=2"></script>
-  <script src="app.js"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>
